@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Практичне заняття 2</title>
+</head>
+<body>
+    <h1>Рівень 1: Цитата дня</h1>
+
+    <div id="quoteBlock"></div>
+
+    <hr>
+
+    <h1>Рівень 2: Візуалізатор JSON</h1>
+
+    <div id="jsonTable"></div>
+
+    <script>
+        // Рівень 1: випадкова цитата
+        fetch('quotes.json')
+            .then(response => response.text())
+            .then(text => {
+                const quotes = JSON.parse(text);
+
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const randomQuote = quotes[randomIndex];
+
+                document.getElementById('quoteBlock').innerHTML = `
+                    <p><b>Цитата:</b> ${randomQuote.text}</p>
+                    <p><b>Автор:</b> ${randomQuote.author}</p>
+                `;
+            });
+
+        // Рівень 2: візуалізація JSON у вигляді таблиці
+        fetch('data.json')
+            .then(response => response.text())
+            .then(text => {
+                const data = JSON.parse(text);
+
+                let table = `
+                    <table border="1" cellpadding="8">
+                        <tr>
+                            <th>Назва</th>
+                            <th>Категорія</th>
+                            <th>Рівень</th>
+                        </tr>
+                `;
+
+                data.forEach(item => {
+                    table += `
+                        <tr>
+                            <td>${item.title}</td>
+                            <td>${item.category}</td>
+                            <td>${item.level}</td>
+                        </tr>
+                    `;
+                });
+
+                table += `</table>`;
+
+                document.getElementById('jsonTable').innerHTML = table;
+            });
+    </script>
+</body>
+</html>

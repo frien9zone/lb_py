@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Python",
+    "category": "Programming",
+    "level": "Beginner"
+  },
+  {
+    "title": "JavaScript",
+    "category": "Web",
+    "level": "Intermediate"
+  },
+  {
+    "title": "Django",
+    "category": "Framework",
+    "level": "Intermediate"
+  }
+]
