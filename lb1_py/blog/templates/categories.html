@@ -1,0 +1,11 @@
+<h1>Категорії</h1>
+
+<ul>
+    {% for category in categories %}
+        <li>
+            {{ category.name }} -
+            Кількість статей:
+            {{ category.articles.count }}
+        </li>
+    {% endfor %}
+</ul>
